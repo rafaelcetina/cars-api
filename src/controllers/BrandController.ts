@@ -11,8 +11,6 @@ export class BrandController {
   async getAll (_req: Request, res: Response): Promise<Response<Brand[]>> {
     const brands = await this.getAllBrands.get()
 
-    console.log('brands', brands)
-
     return res.status(200).json(brands)
   }
 

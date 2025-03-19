@@ -7,8 +7,6 @@ const Pool = pg.Pool
 
 const dbPort = Number(process.env.DB_PORT ?? 5432)
 
-console.log('process.env.DB_PASS:', process.env.DB_PASS)
-
 const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
