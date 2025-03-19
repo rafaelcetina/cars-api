@@ -19,4 +19,8 @@ router.post('/', (req, res) => {
   brandController.create(req, res)
 })
 
+router.post('/:id/models', (req, res) => {
+  modelController.create(req, res)
+})
+
 export { router as brandRoutes }
