@@ -12,6 +12,15 @@ export class CreateModelDto {
   @IsOptional()
   average_price!: number
 }
+
+export class UpdateModelDto {
+  @IsNumber()
+  id!: number
+
+  @IsNumber()
+  @Min(100000)
+  average_price!: number
+}
 export class Model {
   constructor (
     public readonly id: string,
@@ -22,9 +31,10 @@ export class Model {
 }
 
 export interface ModelRequest {
-  name: string
+  id?: string
+  name?: string
   average_price: number
-  brand_id: string
+  brand_id?: string
 }
 
 export interface ModelResponse {

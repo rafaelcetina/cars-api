@@ -5,6 +5,6 @@ export class BrandsCreator {
   constructor (private readonly repository: BrandRepository) {}
 
   async create (brand: BrandRequest): Promise<void> {
-    return await this.repository.create(brand)
+    await this.repository.create(brand)
   }
 }

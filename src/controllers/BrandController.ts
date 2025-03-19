@@ -2,7 +2,6 @@ import { Request, Response } from 'express'
 import { BrandContainer } from '../modules/brands/infrastructure/BrandContainer'
 import { Brand, BrandRequest, CreateBrandDto } from '../modules/brands/domain/entities/Brand'
 import { validate } from 'class-validator'
-// import { validate } from 'class-validator';
 
 export class BrandController {
   // private getAllBrands = DIContainer.getGetAllBooksUseCase();

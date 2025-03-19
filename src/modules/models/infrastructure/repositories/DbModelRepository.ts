@@ -26,4 +26,9 @@ export class DbModelRepository implements ModelRepository {
     await pool.query('INSERT INTO public.model (name, average_price, brand_id) VALUES ($1, $2, $3)',
       [model.name, model.average_price, model.brand_id])
   }
+
+  async update (model: ModelRequest): Promise<void> {
+    await pool.query('UPDATE public.model SET average_price = $1 WHERE id = $2',
+      [model.average_price, model.id])
+  }
 }

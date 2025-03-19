@@ -65,6 +65,18 @@ npm dev
 npm build
 ```
 
+## Conclusiones y observaciones
+El endpoint
+`
+PUT /models/:id
+`
+Lo cambiaría por PATCH al no ser un cambio del modelo completo, no requiere que sea PUT
+
+El response de ejemplo en la lista de Brands: El campo dice 'nombre' pero en realidad es 'name'
+
+
+Con algo más de tiempo podriamos agregar Swagger al proyecto para tener Documentación
+
 ## 🧑‍💻 Author
 
 - [@rafaelcetina](https://www.github.com/rafalcetina)

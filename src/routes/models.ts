@@ -9,4 +9,8 @@ router.get('/', (_req, res) => {
   modelController.getAll(_req, res)
 })
 
+router.put('/:id', (req, res) => {
+  modelController.update(req, res)
+})
+
 export { router as modelRoutes }

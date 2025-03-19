@@ -5,6 +5,10 @@ export class ModelsCreator {
   constructor (private readonly repository: ModelRepository) {}
 
   async create (model: ModelRequest): Promise<void> {
-    return await this.repository.create(model)
+    await this.repository.create(model)
+  }
+
+  async update (model: ModelRequest): Promise<void> {
+    await this.repository.update(model)
   }
 }

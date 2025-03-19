@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { ModelContainer } from '../modules/models/infrastructure/ModelContainer'
-import { CreateModelDto, ModelRequest, ModelResponse } from '../modules/models/domain/entities/Model'
+import { CreateModelDto, ModelRequest, ModelResponse, UpdateModelDto } from '../modules/models/domain/entities/Model'
 import { validate } from 'class-validator'
 
 export class ModelController {
@@ -62,5 +62,22 @@ export class ModelController {
     }
 
     return res.status(201).json({ message: 'Model created' })
+  }
+
+  async update (_req: Request, _res: Response): Promise<Response> {
+    const modelId = Number(_req.params.id)
+    const dto = Object.assign(new UpdateModelDto(), { ..._req.body, id: modelId })
+    const errors = await validate(dto)
+
+    if (errors.length > 0) {
+      return _res.status(400).json({ errors })
+    }
+
+    try {
+      await ModelContainer.modelsCreator().update(dto as ModelRequest)
+      return _res.status(200).json({ message: 'Model updated' })
+    } catch (error: any) {
+      return _res.status(400).json({ message: 'Error updating Model', detail: error.detail })
+    }
   }
 }
