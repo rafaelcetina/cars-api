@@ -1,15 +1,18 @@
 // import models from './models.json'
 
 const models = require('./models.json')
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 // usa PG para conectar a la base de datos y hacer un dump de los datos
 const { Client } = require('pg')
 const client = new Client({
-  user: 'db_user',
-  password: 'password',
-  host: 'localhost',
-  port: 5432,
-  database: 'nexu'
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME
 })
 
 const dump = async () => {
