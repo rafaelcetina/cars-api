@@ -65,6 +65,12 @@ npm dev
 npm build
 ```
 
+### Correr Tests unitarios JEST
+
+```sh
+npm run test
+```
+
 ## Conclusiones y observaciones
 El endpoint
 `
