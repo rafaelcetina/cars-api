@@ -31,14 +31,14 @@ Debido a que es un servidor gratuito, por ahora, el servidor se detiene después
 
 ### Request examples
 
-```json
+```jsonc
 // POST /brands
 {
   "name": "Toyota"
 }
 ```
 
-```json
+```jsonc
 // POST /brands/1/models
 {
   "name": "Prius",
@@ -46,16 +46,13 @@ Debido a que es un servidor gratuito, por ahora, el servidor se detiene después
 }
 ```
 
-```json
+```jsonc
 // PUT /models/33
 {
   "average_price": 506400
 }
 ```
-```json
-# GET /models?greater=380000&lower=400000
-```
-
+` # GET /models?greater=380000&lower=400000 `
 
 
 
