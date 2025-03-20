@@ -14,6 +14,9 @@ El manejador de base de datos <b>PostgreSql</b> el cuál se encuentra encapsulad
 
 El sitio es publicado en Producción gracias al servicio de <b>Render.com</b>, el cuál es gratuito para sitios estáticos, el enlace se encuentra en la descripción de este repositorio.
 
+### Nota
+Debido a que es un servidor gratuito, por ahora, el servidor se detiene después de 15 minutos de inactividad. Si el servicio tarda en responder, es porque no ha recibido peticiones en los últimos 15 minutos
+
 ## 📄 Stack
 
 - NodeJS
