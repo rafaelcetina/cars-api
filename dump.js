@@ -23,8 +23,8 @@ const dump = async () => {
     if (res.rows.length) {
       console.log(res.rows)
       // Vacia la tabla
-      await client.query('TRUNCATE brand CASCADE RESTART IDENTITY')
-      await client.query('TRUNCATE model CASCADE RESTART IDENTITY')
+      await client.query('TRUNCATE brand RESTART IDENTITY CASCADE')
+      await client.query('TRUNCATE model RESTART IDENTITY CASCADE')
     }
 
     // obtiene los datos de models.json, crea una lista con los nombres de las marcas
