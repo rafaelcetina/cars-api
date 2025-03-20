@@ -17,6 +17,48 @@ El sitio es publicado en Producción gracias al servicio de <b>Render.com</b>, e
 ### Nota
 Debido a que es un servidor gratuito, por ahora, el servidor se detiene después de 15 minutos de inactividad. Si el servicio tarda en responder, es porque no ha recibido peticiones en los últimos 15 minutos
 
+## Rutas
+
+| Path | Method | Description | Parameters / Body
+| --- | --- | --- | --- |
+| `/brands` | GET | List all **brands** |
+| `/brands/:id/models` | GET | List all **models** given brand | `id` ID of an Object returned from /brands |
+| `/brands` | POST | Add new **brand** | `name` string for brand name |
+| `/brands/:id/models` | POST | Add model given **brand** id | `id` ID of an Object returned from /brands. `name` string for brand name. Optional: `average_price` amount of average price for model|
+| `/models/:id` | PUT | Modify **model** attributes | `id` ID of an Model. `average_price` amount of average price for model|
+| `/models?greater=&lower=` | GET | List **models** | Optional: `greater` amount of average_price greater than. Optional:`lower` amount of average_price lower than |
+
+
+### Request examples
+
+```json
+// POST /brands
+{
+  "name": "Toyota"
+}
+```
+
+```json
+// POST /brands/1/models
+{
+  "name": "Prius",
+  "average_price": 406400
+}
+```
+
+```json
+// PUT /models/33
+{
+  "average_price": 506400
+}
+```
+```json
+# GET /models?greater=380000&lower=400000
+```
+
+
+
+
 ## 📄 Stack
 
 - NodeJS
