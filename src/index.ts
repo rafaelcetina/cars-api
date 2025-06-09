@@ -1,7 +1,7 @@
 import express from 'express' // ESModules
 import dotenv from 'dotenv'
-import { brandRoutes } from './routes/brands'
-import { modelRoutes } from './routes/models'
+// import { brandRoutes } from './routes/brands'
+// import { modelRoutes } from './routes/models'
 import fs from 'fs'
 import cors from 'cors'
 
@@ -26,8 +26,8 @@ app.get('/ping', (_req, res) => {
   res.send('pong')
 })
 
-app.use('/brands', brandRoutes)
-app.use('/models', modelRoutes)
+// app.use('/brands', brandRoutes)
+// app.use('/models', modelRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
