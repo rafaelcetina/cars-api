@@ -14,6 +14,16 @@ variable "app_name" {
   type        = string
 }
 
+variable "app_name_lb" {
+  description = "The name of the application load balancer"
+  type        = string
+}
+
+variable "app_name_tg" {
+  description = "The name of the application target group"
+  type        = string
+}
+
 variable "vpc_id" {
   description = "The ID of the VPC where resources will be created"
   type        = string
