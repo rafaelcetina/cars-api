@@ -1,24 +1,23 @@
-#FROM node:22-alpine
-#WORKDIR /usr/src/app
-#COPY package*.json ./
-#RUN npm install
-#COPY . .
-
-#EXPOSE 3000
-#CMD ["npm", "start"]
-
-
 #Build stage
 FROM node:22-slim
 
+# Set the working directory in the container
 WORKDIR /app
 
-COPY package*.json .
+# Copy package.json and package-lock.json (or yarn.lock) first to leverage Docker caching
+COPY package*.json ./
 
+# Install dependencies
 RUN npm install
-RUN npm run build
 
+# Copy the rest of the application files
 COPY . .
 
+# Compile TypeScript to JavaScript
+RUN npm run build
+
+# Expose the application's port
 EXPOSE 3000
+
+# Command to start the application
 CMD ["npm", "start"]
