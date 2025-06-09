@@ -51,7 +51,15 @@ resource "aws_ecs_task_definition" "task" {
           containerPort = 3000
           hostPort      = 3000
         }
-      ]
+      ],
+      logConfiguration: {
+        logDriver: "awslogs",
+        options: {
+          "awslogs-group": "app-cars-task-group",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "app-cars"
+        }
+      }
     }
   ])
 }
