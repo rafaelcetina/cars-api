@@ -2,7 +2,6 @@
 #WORKDIR /usr/src/app
 #COPY package*.json ./
 #RUN npm install
-#RUN npm run build
 #COPY . .
 
 #EXPOSE 3000
@@ -10,28 +9,15 @@
 
 
 #Build stage
-FROM node:22-slim AS build
+FROM node:22-slim
 
 WORKDIR /app
 
 COPY package*.json .
 
-RUN npm install
+RUN npm install && npm run build
 
 COPY . .
-
-RUN npm run build
-
-#Production stage
-FROM node:22-slim AS production
-
-WORKDIR /app
-
-COPY package*.json .
-
-RUN npm ci --only=production
-
-COPY --from=build /app/build ./build
 
 EXPOSE 3000
 CMD ["npm", "start"]
