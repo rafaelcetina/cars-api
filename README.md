@@ -1,8 +1,8 @@
-# Prueba Técnica para Nexu
+# Prueba Técnica
 
 ### Api Marcas y Modelos 🎉
 
-#### 📱 Aplicación Web, elaborada para la prueba técnica.
+#### 📱 Aplicación Web, elaborada para prueba técnica.
 
 Decidí utilizar Clean Architecture para separar la aplicación en módulos que permitan escalar y mejorar el mantenimiento de la aplicación.
 
@@ -14,8 +14,10 @@ El manejador de base de datos <b>PostgreSql</b> el cuál se encuentra encapsulad
 
 El sitio es publicado en Producción gracias al servicio de <b>Render.com</b>, el cuál es gratuito para sitios estáticos, el enlace se encuentra en la descripción de este repositorio.
 
-### Nota
-Debido a que es un servidor gratuito, por ahora, el servidor se detiene después de 15 minutos de inactividad. Si el servicio tarda en responder, es porque no ha recibido peticiones en los últimos 15 minutos
+## Despliegue ☁️
+Desplegado en AWS ECS con Fargate para orquestar Docker y usando Terraform y Github Actions.
+
+Se despliega en un Cluster de ECS con un ELB para accesar desde internet con un DNS fijo.
 
 ## Rutas
 
