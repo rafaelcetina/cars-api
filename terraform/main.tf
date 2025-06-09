@@ -35,29 +35,29 @@ resource "aws_iam_role" "ecs_task_execution_role" {
 }
 
 resource "aws_ecs_task_definition" "task" {
-  family                   = var.app_name
-  network_mode             = "awsvpc"
-  cpu                      = "256"
-  memory                   = "512"
-  execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
+  family             = var.app_name
+  network_mode       = "awsvpc"
+  cpu                = "256"
+  memory             = "512"
+  execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
 
   container_definitions = jsonencode([
     {
-      name          = var.app_name
-      image         = "401042946409.dkr.ecr.us-east-1.amazonaws.com/hello-world-app:latest"
-      essential     = true
-      portMappings  = [
+      name      = var.app_name
+      image     = "401042946409.dkr.ecr.us-east-1.amazonaws.com/hello-world-app:latest"
+      essential = true
+      portMappings = [
         {
           containerPort = 3000
           hostPort      = 3000
         }
       ],
-      logConfiguration: {
-        logDriver: "awslogs",
-        options: {
-          "awslogs-group": "app-cars-task-group",
-          "awslogs-region": "us-east-1",
-          "awslogs-stream-prefix": "app-cars"
+      logConfiguration : {
+        logDriver : "awslogs",
+        options : {
+          "awslogs-group" : "app-cars-task-group",
+          "awslogs-region" : "us-east-1",
+          "awslogs-stream-prefix" : "app-cars"
         }
       }
     }
@@ -72,9 +72,9 @@ resource "aws_ecs_service" "service" {
   launch_type     = "FARGATE"
 
   network_configuration {
-    subnets         = var.subnet_ids
+    subnets          = var.subnet_ids
     assign_public_ip = true
-    security_groups = ["sg-0b69168950177c4b5"]
+    security_groups  = ["sg-0b69168950177c4b5"]
   }
 
   load_balancer {
@@ -114,7 +114,7 @@ resource "aws_lb_listener" "app_listener" {
 resource "aws_security_group" "web_sg" {
   name        = "web-sg"
   description = "Allow HTTP and SSH traffic"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port   = 80
