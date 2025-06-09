@@ -16,12 +16,15 @@ app.use(express.json()) // middleware que transforma la req.body a un json
 const PORT = 3000
 
 app.get('/', (_req, res) => {
+  res.status(200)
   const output = fs.readFileSync('./src/welcome.html').toString()
   res.type('text/html')
   res.send(output)
 })
 
-app.get('/ping', (_req, res) => {
+app.get('/health-check', (_req, res) => {
+  res.status(200)
+  res.type('text/plain')
   console.log('someone pinged here!!')
   res.send('pong')
 })
