@@ -2,7 +2,7 @@
 FROM node:22-slim
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json (or yarn.lock) first to leverage Docker caching
 COPY package*.json ./
