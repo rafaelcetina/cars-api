@@ -3,10 +3,14 @@ import dotenv from 'dotenv'
 import { brandRoutes } from './routes/brands'
 import { modelRoutes } from './routes/models'
 import fs from 'fs'
+import cors from 'cors'
 
 dotenv.config()
 
 const app = express()
+
+app.use(cors({ origin: '*' }))
+
 app.use(express.json()) // middleware que transforma la req.body a un json
 
 const PORT = process.env.PORT ?? 3000

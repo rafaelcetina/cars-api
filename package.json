@@ -16,6 +16,7 @@
   "author": "Rodolfo Rafael Dzul Cetina",
   "license": "ISC",
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "4.17.12",
     "@types/jest": "^29.5.14",
     "@types/pg": "^8.11.11",
@@ -26,6 +27,7 @@
   },
   "dependencies": {
     "class-validator": "^0.14.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "4.17.1",
     "pg": "^8.14.1"
