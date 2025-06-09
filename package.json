@@ -7,7 +7,7 @@
     "dev": "ts-node-dev src/index.ts",
     "lint": "ts-standard",
     "start": "node build/index.js",
-    "build": "tsc && node build/index.js",
+    "build": "tsc",
     "migrate": "node dump.js",
     "tsc": "tsc",
     "test": "jest"
