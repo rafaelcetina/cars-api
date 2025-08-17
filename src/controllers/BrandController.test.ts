@@ -12,12 +12,12 @@ describe('BrandController', () => {
     // Arrange
     const mockBrands = [
       new Brand('1', 'Tesla', 100),
-      new Brand('2', 'Audi', 90)
+      new Brand('2', 'Audi', 90),
     ]
 
     const mockGetAllBrands = {
-      get: jest.fn().mockResolvedValue(mockBrands)
-    } as unknown as ReturnType<typeof BrandContainer['brandsGetter']>
+      get: jest.fn().mockResolvedValue(mockBrands),
+    } as unknown as ReturnType<(typeof BrandContainer)['brandsGetter']>
 
     jest.spyOn(BrandContainer, 'brandsGetter').mockReturnValue(mockGetAllBrands)
 
@@ -25,7 +25,7 @@ describe('BrandController', () => {
     const mockRequest = {} as Request
     const mockResponse = {
       status: jest.fn().mockReturnThis(),
-      json: jest.fn().mockReturnThis()
+      json: jest.fn().mockReturnThis(),
     } as unknown as Response
 
     // Act
@@ -41,19 +41,21 @@ describe('BrandController', () => {
   it('should return 400 status code when validation fails', async () => {
     // Arrange
     const mockValidationErrors = [
-      { property: 'name', constraints: { isString: 'name must be a string' } }
+      { property: 'name', constraints: { isString: 'name must be a string' } },
     ]
 
-    jest.spyOn(require('class-validator'), 'validate').mockResolvedValue(mockValidationErrors)
+    jest
+      .spyOn(require('class-validator'), 'validate')
+      .mockResolvedValue(mockValidationErrors)
 
     const controller = new BrandController()
     const mockRequest = {
-      body: { name: 123 } // Invalid name (not a string)
+      body: { name: 123 }, // Invalid name (not a string)
     } as Request
 
     const mockResponse = {
       status: jest.fn().mockReturnThis(),
-      json: jest.fn().mockReturnThis()
+      json: jest.fn().mockReturnThis(),
     } as unknown as Response
 
     // Act
@@ -61,6 +63,8 @@ describe('BrandController', () => {
 
     // Assert
     expect(mockResponse.status).toHaveBeenCalledWith(400)
-    expect(mockResponse.json).toHaveBeenCalledWith({ errors: mockValidationErrors })
+    expect(mockResponse.json).toHaveBeenCalledWith({
+      errors: mockValidationErrors,
+    })
   })
 })
