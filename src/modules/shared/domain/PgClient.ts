@@ -16,8 +16,7 @@ const pool = new Pool({
   idleTimeoutMillis: 30000, // 30 seconds
   min: 2,
   max: 20,
-  connectionTimeoutMillis: 15000
-
+  connectionTimeoutMillis: 15000,
 })
 
 pool.on('error', (err, connection) => {
@@ -28,7 +27,6 @@ pool.on('error', (err, connection) => {
 
 pool.connect((err: any, connection: any) => {
   if (err != null) throw err
-  // console.log('Database is connected successfully !')
   connection.release()
 })
 

@@ -57,15 +57,8 @@ export class RecommendationsGenerator {
 
     // Obtener información de la marca y modelo
     const brands = await this.brandRepository.findAll()
-    console.log(
-      '🚀 ~ RecommendationsGenerator ~ generateForModel ~ brands:',
-      brands,
-    )
     const brand = brands.find((b) => Number(b.id) === Number(brandId))
-    console.log(
-      '🚀 ~ RecommendationsGenerator ~ generateForModel ~ brand:',
-      brand,
-    )
+
     if (!brand) {
       throw new Error('Brand not found')
     }
