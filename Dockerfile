@@ -13,11 +13,11 @@ RUN npm install
 # Copy the rest of the application files
 COPY . .
 
-#RUN npm run reset-db
+RUN npm run reset-db
 
-#RUN npm run setup-db
+RUN npm run setup-db
 
-#RUN npm run seed-data
+RUN npm run seed-data
 
 # Compile TypeScript to JavaScript
 RUN npm run build
